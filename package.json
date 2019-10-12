@@ -1,0 +1,29 @@
+{
+  "name": "load_balancer_prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "load_balancer.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ipware": "^2.0.0",
+    "express-sslify": "^1.2.0",
+    "localtunnel": "^2.0.0",
+    "https": "^1.0.0",
+    "fs": "^0.0.1-security",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolai6303/load_balancer.git"
+  },
+  "author": "nikolai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikolai6303/load_balancer/issues"
+  },
+  "homepage": "https://github.com/nikolai6303/load_balancer#readme"
+}
