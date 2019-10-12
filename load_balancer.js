@@ -2,8 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const https = require('https');
 const request = require('request');
+const ngrok=require('ngrok');
 
-const servers=['http://localhost:8080','http://192.168.43.104:8080'];
+const servers=['http://localhost:8080','http://localhost:80'];
 let cur=0;
 
 var getIP = require('ipware')().get_ip;
@@ -39,13 +40,25 @@ const profilerMiddleware = (req, res, next) => {
   //next();
   //var ipInfo = getIP(req);
   //console.log(getClientIp(req));
-  //var k=getClientIp(req);
-  //console.log(k);
+ // var k=getClientIp(req);
   //var words=k.split('.');
-  //console.log(words[3]);
+  //var l=Number(words[3]);
+  //if(l>500)
+  //{
+   // cur=1;
+  //}
   
-  req.pipe(request({ url: servers[0] + req.url })).pipe(res);
-  //console.log(getClientIp(req));
+  req.pipe(request({ url: servers[cur] + req.url })).pipe(res);
+  var k=getClientIp(req);
+  var words=k.split('.');
+  var l=words[3];
+  console.log(words[3]);
+  //console.log(typeof l);
+  if(l>200)
+  {
+    cur=1;
+  }
+ // console.log(getClientIp(req));
   //console.log(req.connection.remoteAddress);
   next();
   //cur = (cur + 1) % servers.length;
@@ -70,11 +83,11 @@ app.listen(112,() => {
 
 const localtunnel = require('localtunnel');
 
-(async() => {
+ (async() => {
 	const tunnel = await localtunnel(112, { subdomain: 'hello12345'} );
 
-console.log(tunnel.url);
+ console.log(tunnel.url);
 tunnel.on('close', function() {
-    console.log("tunnel closed");
-});
-})();
+     console.log("tunnel closed");
+ });
+ })();
