@@ -39,7 +39,7 @@ const profilerMiddleware = (req, res, next) => {
   //next();
   //var ipInfo = getIP(req);
   //console.log(getClientIp(req));
-  //var k=getClientIP(req);
+  //var k=getClientIp(req);
   //console.log(k);
   //var words=k.split('.');
   //console.log(words[3]);
